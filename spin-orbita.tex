@@ -1,29 +1,49 @@
-
-\section{ Esperimento Stern-Gerlach }
-Il problema consiste nella deflessione di un fascio di particelle neutre immerse in un campo magnetico disomogeneo; 
-quello che ci si aspetterebbe \`e una distribuzione omogenea di particelle sullo schermo. Tuttavia quello che si 
-osserva \`e che il numero di componenti in cui viene diviso il fascio pu\`o esser pari o dispari. 
+\section{ Interazione Spin-Orbita }
+\subsection{ Esperimento Stern-Gerlach }
+Il problema consiste nella deflessione di un fascio di particelle neutre 
+immerse in un campo magnetico disomogeneo; quello che ci si aspetterebbe 
+\`e una distribuzione omogenea di particelle sullo schermo. 
+Tuttavia quello che si osserva \`e che il numero di componenti in cui 
+viene diviso il fascio pu\`o esser pari o dispari. 
 \\
 \\
 Supponiamo un campo magnetico $\vec{B}$ diretto come $z$, e $\dpart{B}{z} \neq 0$. 
 \\
 La forza che agisce sull'atomo in presenza di campo magnetico disomogeneo \`e: 
 $$ F_z = \mu_z \dpart{B}{z} $$
-Pensiamo all'atomo come una spira percorsa da corrente (l'elettrone che si muove su una circonferenza attorno al nucleo),
-in questo caso il mio atomo \`e dotato di un campo magnetico che posso esprimere come:
+Pensiamo all'atomo come una spira percorsa da corrente 
+(l'elettrone che si muove su una circonferenza attorno al nucleo), in questo 
+caso il mio atomo \`e dotato di un campo magnetico che posso esprimere come:
 $$ \vec{\mu} = \vec{I} A \hat{n} $$
-dove $A=\pi r^2$ \`e l'area dell'orbita, $\vec{I}=\frac{q}{T}=\frac{q\vec{v}}{2\pi r}$ la corrente generata dal moto
-della particella di carica $q$ e $\hat{n}$ la normale uscente dal piano della spira.
+dove $A=\pi r^2$ \`e l'area dell'orbita, $\vec{I}=\frac{q}{T}=\frac{q\vec{v}}{2\pi r}$ 
+la corrente generata dal moto della particella di carica $q$ e $\hat{n}$ 
+la normale uscente dal piano della spira.
 \\
-Dato che $\vec{l}=mr\vec{v}\hat{n}$ posso riscrivere il momento magnetico in modo classico come:
+Dato che $\vec{l}=mr\vec{v}\hat{n}$ posso riscrivere il momento magnetico 
+in modo classico come:
 $$ \vec{\mu} = \frac{qr\vec{v}}{2}\hat{n} = \frac{q}{2m}\vec{l} $$
-Di fatto questa proporzionalit\`a tra $\vec{\mu}$ e $\vec{l}$ vale anche nel caso di operatori quantistici;
-per un elettrone di carica $q=-\abs{q_e}$ posso scrivere:
+Di fatto questa proporzionalit\`a tra $\vec{\mu}$ e $\vec{l}$ vale anche 
+nel caso di operatori quantistici; per un elettrone di carica $q=-\abs{q_e}$ 
+posso scrivere:
 $$ \opvec{\mu_l} = \frac{- \abs{q_e} }{2 m_e} \opvec{l} $$
 \\
 Introduco la seguente costante, nota come \emph{magnetone di bohr}:
 $$ \mu_B \equivdef \frac{\hbar q_e}{2m_e} $$
-Allora il momento orbitale di un elettrone diventa:
+Allora il momento magnetico orbitale di un elettrone diventa:
 $$ \opvec{\mu_l} = -\mu_B\frac{\opvec{l} }{\hbar} $$
 \\
+Il valor medio della forza \`e :
+$$ \avg{F_z} = \avg{\mu_z}\dpart{B}{z} = -\mu_B\frac{\avg{l_z} }{\hbar} = -\mu_B m_l $$
+Se considero il caso $l=0$, dato che $ -l \leq m_l \leq l $, si ha che 
+$\avg{l^2} =\avg{l_z} = 0$, per cui si ci aspetterebbe una sola deflessione,
+ma sperimentalmente si misurano due valori di $F_z\neq 0$. 
+Questo si spiega andando a considerare il contributo dato dal momento angolare
+intrinseco (spin), che suggerisce sia presente anche un momento magnetico 
+intrinseco, definito come:
+$$ \opvec{\mu_s} = -\mu_B g_s \frac{\opvec{s} }{\hbar} $$
+dove $g_s$ \`e il \emph{fattore di Land\'e}. Per l'elettrone vale $g_s=2$
+\\
+
+\clearpage
+\subsection{ Hamiltoniana di Spin-Orbita }
 
