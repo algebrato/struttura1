@@ -1,0 +1,260 @@
+\section{Dinamica degli elettroni in una banda}
+Per descrivere la dinamica degli elettroni, in un certo tipo di potenziale, il primo passo è quello di identificare il modo migliore per descrivere l'elettrone stesso. In questo caso, l'approccio migliore è quello usuale, cioè la descrizione dell'elettrone tramite pacchetto d'onda sufficiente locacalizzato. Con sufficientemente localizzato si intende 
+\newl{\psi_{\vet k}({\vet r},t) = \sum_{\vet k} f({\vet k})\exp\left[i\left({\vet k} \cdot {\vet r} - \frac{E({\vet r})}{\hbar}t\right)\right]}
+in cui sia soddisfatta la condizione di minima incertezza
+\newl{\boxed{\Delta {\vet r} \cdot \Delta {\vet k} \sim 1}.}
+La lunghezza tipica su cui è scalato il problema, per quanto riguarda ${\vet k}$, è la dimensione della prima zona di Brillouin cioè $2\pi/a$. Avere un pacchetto d'onda ben definito nello spazio ${\vet k}$ vuol dire quindi avere un $\Delta {\vet k} \ll 2\pi/a$. Ovviamente, per continuare a valere la condizione di minima incertezza, se $\Delta k$ è molto piccolo, $\Delta x$ sarà molto grande, in questo caso sarà molto più grande di $\Delta x \gg a/2\pi$. Nel caso in studio è opportuno avere una buona definizione del pacchetto d'onda in $x$ (perchè?). Definiamo la \textit{velocità di gruppo} del pacchetto d'onda, che sarà data da
+\newl{\boxed{\langle v \rangle = \frac{d\omega}{dk}=\frac{1}{\hbar}\frac{\partial E(k)}{\partial k}}}
+Se abbiamo definito una velocità per il pacchetto d'onda allora possiamo dire che c'è una corrente che caratterizza il mezzo, la cui dentistà è
+\newl{J=-e\int \frac{d^3k}{(2\pi)^3}2_s v(k)f(k)}
+Se all'elettrone applico una forza, facendolo uscire dallo stato di equilibrio \`e possibile scrivere
+\newl{dE = F dl = F \cdot v dt = F_\alpha v_\alpha dt }
+La forza che agisce sul singolo elettrone sarà del tipo
+\newl{F_\alpha = \hbar \frac{dK_\alpha}{dt}.}
+In approssimazione semiclassica, l'equazione di newton per il singolo elettrone è possibile scriverla come
+\newl{\frac{dv_\alpha}{dt} = \frac{1}{\hbar} \frac{\partial}{\partial t}\left(\frac{\partial E}{\partial k}\right) = \frac{1}{\hbar}\frac{\partial^2E}{\partial k_\alpha \partial k_\beta} \frac{\partial k_\beta}{dt}}
+Osservando come è fatta la forma dell'equazione è possibile identificare le varie parti dell'equazione di newton e quindi definire una massa efficacie come 
+\newl{\left(\frac{1}{m^*}\right)_{\alpha,\beta}=\frac{1}{\hbar}\frac{\partial^2 E}{\partial k_\alpha \partial k_\beta }}
+che è strettamente in funzione alla forma della banda. La dinamica quindi è data dalla curvatura della banda. Se sono in una dimensione non ho problemi, se sono in più dimensioni \`e possibile avere masse efficaci diverse in funzione alla diversa curvatura della banda nelle varie direzioni. L'ordine di grandezza della massa efficace si aggira intorno a $0.01 m_e < m^* < 0.1 m_e$.
+\subsection{Oscillazioni di Bloch}
+
+
+
+Abbiamo visto che è possibile definire una velocità caratteristica del pacchetto d'onda all'interno del cristallo, associandola alla velocità di gruppo ${\vet v} = (1/\hbar) \partial_kE({\vet k})$. Se agisce una forza esterna sull'elettrone l'equazione del moto è possibile scriverla in forma semiclassica come
+\newl{\boxed{a_\alpha =\left(\frac{d{\vet v}}{dt}\right)_\alpha = \left(\frac{1}{m^*}\right)_{\alpha,\beta}{\vet F} _\beta}}
+spazio $k$ l'elettrone arriva a $\pi/a$ e riparte in modo periodico da $-\pi/a$. Quello che effettivamente succede è che nello spazio reale si ha un'inversione della velocità in prossimità dei punti di diffrazioni, quindi osservo delle oscillazioni, chiamate appunto oscillazioni di Bloch. Il profilo dell'energia e della velocità risulterà essere come in Fig~\ref{vel:en}.
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\fbox{
+		\begin{tikzpicture}[scale=1,auto=center]
+			\draw[->] (-2,2.5) -- (2,2.5);
+			\draw[->] (0,0) -- (0,5);
+			\node[] at (2,2.25) {$k$};
+			\node[] at (-0.5,5) {$E(k)$};
+			\draw[dashed] (-1.8,0) -- (-1.8,5);
+			\draw[dashed] (1.8,0) -- (1.8,5);
+			\draw (-1.8,4.5) parabola bend (0,2.5) (1.8,4.5);
+		\end{tikzpicture}
+	}
+		\caption{Grafico $E(k)$}
+	\end{subfigure}
+	\qquad\quad
+	\begin{subfigure}[b]{0.3\textwidth}
+		\fbox{
+		\begin{tikzpicture}[scale=1,auto=center]
+			\draw[->] (-2,2.5) -- (2,2.5);
+			\draw[->] (0,0) -- (0,5);
+			\node[] at (2,2.25) {$k$};
+			\node[] at (-0.5,5) {$v(k)$};
+			\draw[domain=-1.8:1.8] plot (\x,{2*sin(\x*180/1.8) + 2.5 });
+			\draw[dashed] (-1.8,0) -- (-1.8,5);
+			\draw[dashed] (1.8,0) -- (1.8,5);
+		\end{tikzpicture}
+	}
+		\caption{Profilo della velocità}
+	\end{subfigure}
+	\caption{Velocità ed energia in funzione di  ${\vet k}$, $v_k = \hbar^{-1} \partial_k E$. Le linee tratteggiate indicano il confine della prima zona di Brillouin}
+	\label{vel:en}
+\end{figure}
+Sperimentalmente la corrente di Bloch non si vede a causa delle impurità del cristallo. Se fosse visibile, la densità di corrente di Bloch avrebbe una forma tipica delle densità di corrente
+\newl{{\vet J } = -e \int \frac{d^3k}{(2\pi)^3} 2_s {\vet v_k} f({\vet k}) \label{dens:corr}}
+dove $f({\vet k})$ indica la densità di portatori di carica sulla banda. \`E abbastanza intuitivo capire che se $f({\vet k})=1$, cioè se la banda è piena, allora $\vet J = 0$ in quanto il profilo velle velocità sarebbe completo per ogni $\vet k$, integrando tutto nella prima zona di Brillouin, si integra $\vet{v_k}$ che è periodica dispari. Questo fa annullare l'integrale (\ref{dens:corr}). Se la banda è semipiena, ed è presente una certa forza esterna, allora in questo caso, per un cristallo perfetto, si ha ${\vet J} \neq 0$. La forza esterna è applicata inserendo il materiale in un campo elettrico, da questo fatto ecco giustificata la legge di Ohm
+\newl{\boxed{{\vet J} = \sigma {\vet E}}}
+Un ulteriore caso interessante è quello mostrato in Fig.~\ref{semip:cond} in cui si ha la banda di valenza quasi piena e la banda di conduzione con qualche elettrone.
+\begin{figure}
+	\centering
+		\fbox{
+		\begin{tikzpicture}[scale=1,auto=center]
+			\draw[->] (-2,2.5) -- (2,2.5);
+			\draw[->] (0,0) -- (0,5);
+			\node[] at (2,2.25) {$k$};
+			\node[] at (-0.5,5) {$E(k)$};
+			\draw[dashed] (-1.8,0) -- (-1.8,5);
+			\draw[dashed] (1.8,0) -- (1.8,5);
+			\draw [black] plot [smooth,tension=0.4] coordinates {(-1.8,1.5) (-1.75,1.5) (-1.3,1.6) (0,2.5) (1.3,1.6) (1.75,1.5) (1.8,1.5)};
+
+			\draw [black] plot [smooth,tension=0.4] coordinates {(-1.8,4) (-1.75,4) (-1.3,4.1) (0,3) (1.3,4.1) (1.75,4) (1.8,4)};
+
+			\draw[->] (3,0) -- (3,5);
+			\draw (3,1.2) -- (4,1.2);
+			\draw (4,1.2) -- (4,2.5);
+			\draw [black] plot [smooth,tension=1] coordinates {(4,2.5) (3.75,2.8) (3.15,3.25) (3,3.6)};	
+			\draw[dashed] (0,3) -- (4.5,3);
+			\draw[dashed] (-1.2,3.45) -- (4.5,3.45);
+			\node[] at (3.5,0) {$f(E)$};
+		\end{tikzpicture}
+	}
+	\caption{Esempio con banda di valenza pieno e banda di conduzione con pochi elettroni}
+	\label{semip:cond}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+		\fbox{
+		\begin{tikzpicture}[scale=1,auto=center]
+			\draw[->] (-2,2.5) -- (2,2.5);
+			\draw[->] (0,0) -- (0,5);
+			\node[] at (2,2.25) {$k$};
+			\node[] at (-0.5,5) {$E(k)$};
+			\draw[dashed] (-1.8,0) -- (-1.8,5);
+			\draw[dashed] (1.8,0) -- (1.8,5);
+			\draw [black] plot [smooth,tension=0.4] coordinates {(-1.8,1.5) (-1.75,1.5) (-1.3,1.6) (0,2.5) (1.3,1.6) (1.75,1.5) (1.8,1.5)};
+
+			\draw [black] plot [smooth,tension=0.4] coordinates {(-1.8,4) (-1.75,4) (-1.3,4.1) (0,3) (1.3,4.1) (1.75,4) (1.8,4)};
+
+			\draw[->] (3,0) -- (3,5);
+			\draw (3,1.2) -- (4,1.2);
+			\draw (4,1.2) -- (4,2.5);
+			\draw [black] plot [smooth,tension=1] coordinates {(4,2.5) (3.75,2.8) (3.15,3.25) (3,3.6)};	
+		\end{tikzpicture}
+	}
+	\caption{Esempio con banda di valenza pieno e banda di conduzione con pochi elettroni}
+	\label{semip:cond}
+\end{figure}
+
+In questo caso la densità di corrente di Bloch è possibile scriverla come 
+\newl{{\vet J} = 0 = -e \int\frac{d^3k}{(2\pi)^3} {\vet v} (k) f(k\pi) -e\int\frac{d^3k}{(2\pi)^3} {\vet v} (k) (1-f(k\pi) }
+da cui si arriva all'ugualianza
+\newl{e \int\frac{d^3k}{(2\pi)^3} {\vet v} (k) f(k\pi) = -e\int\frac{d^3k}{(2\pi)^3} {\vet v} (k) (1-f(k\pi) = {\vet J} _{semipiena} }
+in cui la corrente nella banda semipiena è uguale alla corrente di buche cambiate di segno. La buca esiste solo nel materiale, non esiste come entit\`a a s\`e, quindi si definisce "quasiparticella". 
+\subsection{Comportamenti oscillatori nei metalli}
+La determinazione della superficie di Fermi cio\`e di quella superficie nello spazio $k$ delimitata dalle energie di occupazioni degli stati a bassa temperatura, \`e di particolare importanza nello studio della fisica dei metalli. La forma della superficie di fermi determina lo stato di equilibrio, le sue propriet\`a ottiche, i coefficienti di trasporto ed \`e il banco di prova per confrontare i calcoli teorici sulla struttura delle bande.
+Circa le varie metodologie usate per indagare la forma della superficie di Fermi, quella che sfrutta \textit{l'effetto di De Haas - Van Alphen} \`e sicuramente quella pi\`u famosa e dal punto di vista fisico, strettamente collegata alle essenziali propriet\`a quantiche della materia condensata. L'effetto di De Haas - Van Alphen si pu\`o riassumere come \textbf{comportamento oscillatorio della magnetizzazione dei metalli (o semimetalli) come funzione di un campo magnetico applicato}.
+L'effetto di De Haas - Van Alphen si presenza in quesi sistemi metallici molto puri, a temperatura molto bassa e tipicamente in presenza di campo magnetico molto forte, di alcuni Tesla. Le oscillazioni della magnetizzazione risultano da un fenomeno conosciuto come \textit{Quantizzazione di Landau} in cui gli elettroni in un metallo possono essere presenti solo solo su una serie di orbitali quantizzati in un campo magnetico. A causa del fatto che il numero di occupazione dei livelli di Landau cambia in funzione al campo magnetico applicato e quindi \`e possibile osservare oscillazioni nella manetizzazione ( o meglio, nella suscettivit\`a magnetica $\chi_M = \partial M / \partial H$ ) come previsto da Landau nel 1930. Queste oscillazioni sono esattamente periodiche con l'inverso del campo magnetico, come previsto da Onsager il quale ha permesso di collegare il periodo delle oscillazioni $\Delta(1/H)$ con l'area della sezione d'urto estremale della superficie di Fermi in un piano ortogonale alla direzione del campo applicato.
+
+Gli esperimenti che indagano l'effetto di De Haas - Van Alphen, sono spesso caratterizzati da misure di voltaggio indotto in sensori arrotolati intorno al campione e a loro volta immersi in un grande solenoide che ne modula il campo magnetico interno. Il voltaggio nel singolo sensore \`e quindi proporzionale alla variazione di magnetizzazione nel tempo, quindi \`e anche un indice sulla suscettivit\`a magnetica. 
+\subsection{Teoria semiclassica per elettroni di Bloch in campo magnetico uniforme}
+Si consideri inizialmente una descrizione semiclassica della dinamica degli elettroni nelle bande energetiche. Gli elettroni sono rappresentati da pacchetti d'onda, come combinazione lineare di stati Bloch, piccati intorno ad un ben definito vettor d'onda $k$ e di una larghezza in modo tale che il pacchetto d'onda risulti distribuito su pi\`u celle del reticolo cristallino. La risposta all'applicazione di un campo elettrico o magnetico, che varia molto lentamente rispetto alla lunghezza del pacchetto d'onda da considerarlo constante in zone piccole del reticolo, \`e data da due equazioni della dinamica che collegano la velocit\`a dell'elettrone alla curvatura della banda energetica
+\newl{\frac{\partial r}{\partial t} &=& v(k) = \frac{1}{\hbar} \frac{\partial E(k)}{\partial k}\\  
+\hbar\frac{\partial k }{\partial t} &=& \frac{e}{c} v(k)\times H }
+da cui segue immediatamente che l'energia $E(k)$ e la componente  del vettore d'onda $k$ parallelo alla direzione del campo magnetico, sono entrambe costanti del moto. Gli elettroni si muovono quindi lungo curve nello spazio $k$ (del reticolo reciproco) date dall'intersezione tra le superfici ad energia costante e i piani perpendicolari ad H. In particolare \`e possibile notare che si hanno orbite chiuse (non si \`e arrivati ancora al bordo della zona di Brillouin) e orbite aperte (\`e stata toccata la zona di Brillouin) in funzione alla geometria della superficie ad energia costante. In una teoria semiclassica la distribuzione delle orbite e dei livelli energetici \`e un quasi continuo e riflette la geometria delle superfici ad energia costante (questo non \`e totalmente vero in una teoria completamente quantistica).
+
+Un importante risultato circa il moto di elettroni di Bloch in un campo magnetico che sar\`a molto utile \`e una \textit{relazione tra il periodo di un orbita chiusa e il cambiamento dell'area planare racchiusa dall'orbita, in fiunzione all'energia}. Partendo dall'equazione precedente scritta coi moduli
+\newl{\abs{\frac{\partial k}{\partial t} } = \frac{|e|H}{\hbar^2c}\abs{\left(\frac{\partial E(k)}{\partial k}\right)_\perp }  }
+dove $(\partial E(k)/ \partial k)_\perp$ \`e la componente del gradiente dell'energia perpendicolare al campo, in alre parole la sua proiezione sul piano dell'orbita. Il periodo di un orbita pu\`o essere determinato come 
+\newl{T=\oint\,dt = \oint\frac{dk}{|\partial k / \partial t|} = \frac{\hbar^2c}{|e|H} \oint \frac{dk}{|(\partial E(k)/\partial k)_\perp|}}
+dove  $dk$ rappresenta la quantit\`a di di una piccola orbita nello spazio $k$ e si sta integrando intorno ad un orbita chiusa. Se si vanno a considerare le orbite prime vicine, con differenza di energia $\Delta E = E_2-E_1$ piccola, La regione nel piano $k_x-k_y$ \`e una fascia di larghezza $\Delta(k)$, dove 
+\newl{\Delta E = \abs{\left(\frac{\partial E(k)}{\partial k}\right)_\perp } \Delta(k)}
+in cui il gradiente dell'energia \`e perpendicolare alla superficie ad energia costante e quindi, la sua proiezione \`e perpendicolare all'orbita. In questo modo il periodo pu\`o essere scritto come
+\newl{T=\frac{\hbar^2 c}{\abs{e} H} \frac{1}{\Delta E} \oint\Delta (k) \,dk.}
+L'integrale nell'ultima equazione rappresenta l'area tra le due orbite nello spazio $k$, definendo quest'area $\Delta A$, si arriva quindi alla fondamentale relazione
+\newl{\boxed{T= \frac{\hbar^2 c}{\abs{e} H} \frac{\Delta A}{\Delta E}},}
+in cui si mette in collegamento il periodo orbitale con la geometria della superficie ad energia costante nello spazio $k$. Nel limite della dinamica di elettroni liberi in banda, approssimazione valida per molti metalli, le superfici ad energia costante sono sfere e le orbite sono quindi circolari. Considerando l'energia dell'elettrone libero come $E(k) = \hbar^2 k^2 / 2 m $ l'area delle orbite nel pinao $k_x-k_y$ \`e $A=\pi k^2$, dato che in questo caso ha senso ricondursi al limite semiclassico, dal principio di corrispondenza di Bohr, deduco che
+\newl{T=\frac{2\pi}{\omega_C}\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, \omega_C = \frac{\abs{e} H}{mc}. \label{CICLOTR:OM}}
+In questo modo \`e possibile mettere in relazione la variazione di area trasversale nello spazio $k$ tra orbite adiagenti (tubi di landau adiacenti) e il campo magnetico applicato
+\newl{\boxed{\Delta A = \frac{2\pi \abs{e} H}{\hbar c} }.}
+La $\omega_C$, definita in (\ref{CICLOTR:OM}), \`e la fondamentale \textbf{frequenza di ciclotrone}. Assomiglia molto alla $\omega$  classica per un elettrone in moto in campo magnetico, rappresentato, per\`o questa volta, nello spazio reale. 
+Nella situazione in studio ora, l'energia ha una dipendenza quasi-parabolica dal vettore d'onda $k$, in questo modo le particelle cariche si comportano come particelle libere con frequenza
+\newl{\boxed{\omega_C = \frac{\abs{e} H}{m^*c}},}
+in cui $m^*$ rappresenta la \textbf{massa effettiva di ciclotrone}. La massa, quindi, pu\`o dipendere dalla direzione del campo magnetico applicato, che \`e collegato alla curvatura della superficie $E(k)$ e quindi in relazione con il tensore di massa efficace della banda.
+Per campi magnetici nell'orgine di alcuni $KG$, la tipica frequenza di ciclotrone \`e nelle microonde. Per un campo magnetico di $1T$ e massa e carica dell'elettrone risulta $\omega_C=1.76\cdot10^{11} rad/s$ corrispondente alla lunghezz d'onda di $1.07cm$
+\subsection{Livelli energetici di Landau}
+Si vuole descrivere ora una trattazione quantistica dei livelli energetici di un sistema di elettroni liberi immersi in un campo magnetico costante. L'energia dei livelli di un sistema di particelle cariche immerse in un campo magnetico uniforme sono ovviamente diversi da quelli di particella libera. Si \`e particolarmente interssati all'energia dei livelli e alla loro distribuzione  nel sistema di elettroni in un metallo. Il primo approccio "geniale" \`e quello dei \textit{Livelli di Landau}.
+
+L'Hamiltoniana del sistema \`e
+\newl{\op{H} = \frac{1}{2m}\left(\op{p} -\frac{e}{c}A \right)^2 + e\phi - \mu\cdot H, }
+dove $\op{p} $ \`e l'operatore momento dell'elettrone, $A=A(r)$ \`e il potenziale vettore del campo magnetico $H$. Siamo interessati ai livelli energetici di un gas di elettroni liberi in un campo \textbf{magnetostatico}, quindi $\phi=0$. Selezioniamo un campo magnetico diretto solo lungo l'asse $z$ quindi ${\vet H} =H\op{z} $ di modulo $H$. In generale l'operatore momento non commuta con il potenziale vettore infatti si ha che $[\op{p}, A] = -i\hbar\nabla\cdot A$, per\`o si pu\`o scegliere un potenziale vettore, costruito in modo tale che commuti con due componenti di $\op{p} $, che \`e $A = \left(A_x = -H\op{y}   ,A_y=0 ,A_z=0 \right)$, da cui si ottiene facilmente il campo magnetico desiderato (solo lungo l'asse $z$ con modulo $H$). In questo modo l'Hamiltoniana \`e possibile scriverla in modo decisamente pi\`u semplice
+\newl{\op{H} = \frac{1}{2m} \left(\op{p} _x + \frac{eH}{c}\op{y} \right)^2 + \frac{\op{p} _y^2}{2m} + \frac{\op{p} _z^2 }{2m} -\mu_z H }
+Dato che $[H,s_z]=0$ e dato che il problema \`e tutto concentrato sull'asse $z$ l'ultima parte dell'Hamiltoniana \`e possibile sostituirla direttamente son il suo relativo autovalore
+\newl{E_{spin}= \pm \mu_B H = \pm \frac{1}{2} \hbar \omega_C}
+cio\`e il contributo energetico di uno spin parallelo o antiparallelo al campo magnetico. Questo contributo energetico diventa rilevante solo se c'\`e un cambiamento nella distribuzione degli spin degli elettroni, come succede nel caso del paramegnetismo di Pauli, dove si hanno valori di suscettivit\`a magnetica piccoli e positivi. 
+
+Escludendo quindi il contributo dello spin, l'equazione di Schroedinger per la funzione d'onda elettronica, nello spazio reale, \`e data da
+\newl{\frac{1}{2m}\left[\left(\op{p} _x +\frac{eH}{c}\op{y} \right)^2 + \op{p} _y^2 + \op{p} _z ^2\right]\psi = E\psi. \label{SH:LAND}}
+Le compomenti dell'operatore momento, $\op{p} _x$ e $\op{p} _y$ commutano con l'Hamiltoniana e quindi sono costanti del moto. I loro autovalori possono assumere \textit{a priori} valori da $-\infty$ a $+\infty$ senza limitazioni, come per esempio nel modello della particella libera, in cui la funzione d'onda \`e data da onde piane. In particolare, ricordando la relazione di come trasforma il momento in presenza di campi elettromagnetici $m{\vet v} = {\vet p} - (e/c){\vet A} $, si ha che $v_z = p_z/m$ e quindi risulta che la componente $z$ della velocit\`a risulta non quantizzata, mentre le altre componenti della velocit\`a possono essere determinate dagli autovalori dell'energia. Una soluzione per l'equazione (\ref{SH:LAND}) pu\`o essere la seguente ansatz
+\newl{\psi(x,y,z) = \exp[i(xp_x+zp_z)/\hbar]\chi(y),}
+dove $p_x$ e $p_y$ sono gli autovalori dell'operatore momento. Sostituendo tutto nell'Hamiltoniana, compresa la definizione dell'operatore $p_y=-i\hbar (\partial / \partial y)$, \`e quindi possibile scrivere
+\newl{- \frac{\hbar^2}{2m} \frac{d^2\chi}{dy^2} + \left[ \frac{1}{2m}(p_x^2 + p_z^2) + yp_x \frac{eH}{mc} + y^2 \frac{e^2H^2}{2mc^2} \right]\chi = E \chi.  }
+Introducendo la frequenza di ciclotrone ed introducendo il parametro $y_0 = -cp_x/(eH)$ si ottiene in conclusione il seguente problema agli autovalori
+\newl{\left[ -\frac{\hbar^2}{2m} \frac{d^2}{dy^2} + \frac{m}{2}\omega_C^2(y-y_0)^2 \right]\chi(y) = \left(E-\frac{p_z^2}{2m}\right)\chi(y),}
+che \`e praticamente l'equazione di Schroedinger per un oscillatore armonico monodimensionale, con $\omega = \omega_C$, centrato in $y_0$. La funzione d'onda e gli autovalori dell'energia, a questo punto, sono ben noti
+\newl{E_n - \frac{p_z^2}{2m} = \hbar\omega_C\left(n+\frac{1}{2}\right)}
+dove $n$ \`e intero e rappresenta il numero quantico riferito al corrispondente \textbf{Livello di Landau}, per un elettrone in moto in un campo magnetico uniforme. Riscrivendo meglio la relazione precedente
+\newl\boxed{{E_{n_L}(p_z) = \hbar\omega_C\left( n_L + \frac{1}{2}  \right) + \frac{p_z^2}{2m}.}}
+I livelli energetici hanno quindi una struttura semplice, una parte longitudinale data dal contributo di moto libero con momento $p_z$ parallelo al campo magnetico e una parte trasversa data dai livelli dell'oscillatore armonico. \`E importartante sottolineare l'interpretazione data a $y_0$ come la posizione del centro della traiettoria classica sull'asse $y$, determinato dalla costante del moto $p_x$, che assume il ruolo di indice di degenerazione. Infatti, in cinematica, una traiettoria circolare con velocit\`a angolare $\omega_C$ e centro in $(x_0,y_0)$ \`e descritta dalle formule
+\newl{y(t) - y_0 = \frac{1}{\omega_C}v_x(t)\,\,\,\,;\,\,\,\, x(t)-x_0 = - \frac{1}{\omega_C}v_y(t),}
+che usando le relazioni quantistiche $mv_i = p_i -(e/c)A_i$ con $A=(-Hy,0,0)$ si ha che
+\newl{y_0 &=& -\frac{cp_x}{eH} \label{REL:YZER}\\
+	x_0 &=& \frac{cp_y}{eH}+x.\label{REL:XZER}}
+La relazione (\ref{REL:YZER}) non \`e altro che la definizione dichiarata precedentemente di $y_0$, la seconda relazione vuole definire il centro della traiettoria sull'asse $x$.=m in fatti \`e possibile verificare che $[x_0,H]=0$ quindi $x_0$ pu\`o avere un valore ben noto. Il problema \`e che $x_0$ non commuta con $y_0$ e quindi le coordinate del centro della traiettoria non possono essere note allo stesso tempo, a causa del principio di indeterminazione.
+
+In conclusione la "traiettoria quantistica" di un elettrone \`e caratterizzata da $p_z$ che ne determina il moto  lungo l'asse $z$ e da $p_x$ che determina il centro della traiettoria sull'asse $y$, mentre la cordinata $x$ rimane indeterminata. Queste considerazioni sono essenziali per determinare la \textbf{degenerazione dei livelli energetici di Landau} che \`e il vantaggio principale della formulazione del problema da parte di Landau.
+
+Se gli elettroni sono confinati in un piano di area $A_0= L_xL_y$, proprio l'area fisica del campione, con assegnata una ben specifica energia $E_{n_L}$ (Senza perdere di generalit\`a possiamo considerare che $p_z=0$) il momento costante $p=\hbar k_x$ cessa di essere continuo e deve assumere valori discreti che sono dati dalle condizioni al contorno periodiche di Bohr-Von Karman. Il numero di possibili stati con vettor d'onda tra $k_x$ e $k_x+\Delta k_x$ \`e $\Delta n_x = \Delta k_x \cdot L_x/(2\pi)$ quindi il numero possibile di valori per l'impulso nell'intervallo $\Delta p_x$ \`e uguale a $\Delta p_x \cdot L_x/(2\pi\hbar)$. Gli stati permessi sono solo quelli con il centro $y_0$ della traiettoria classica che giace sulla superficie $A_0$. Dall'equazione (\ref{REL:YZER}), si ha che $\Delta p_x = \Delta y_0 \cdot \abs{e} H/ c$ e dato che $y_0$ varia in un range compreso tra $0$ e $L_y$ si pu\`o concludere che il \textit{numero di stati degeneri sul piano di area $L_xL_y$} (quindi $\forall k_z$) \`e
+\newl{\boxed{N_d = 2 \frac{\abs{e} }{2\pi\hbar c} A_0 H.}}
+\`E particolarmente significativo  soffermarsi sul risultato appena ottenuto commentandolo ampiamente. Come prima cosa si consideri un campo magnetico nell'ordine di $1T$. In queste condizioni la differenza di energia tra due livelli di Landau \`e di circa $0.116eV$ che \`e una quantit\`a molto piccola se confrontata con l'energia di Fermi che si aggira nell'ordine dell'$eV$. Quindi il range di variazione del numero quantico di occupazione $n_L$ si estende in un range di circa $10^4$ quindi \`e molto grande. Come seconda cosa, si consideri un campione di area superficiale di $1cm^2$ il numero di degenerazione degli stati risulta essere nell'ordine di $N_d \sim 10^{10}$ che \`e \textit{un numero macroscopico di elettroni appartenenti allo stesso livello energetico in un campo magnetico}. Per capire il significato di questa degenerazione, \`e possibile guardare in Figura (Land-11) in cui \`e rappresentata la struttura dei livelli energetici per elettroni liberi in un campo magnetico. Sulla sinistra c'\`e una distribuzione dei livelli energetici senza campo magnetico, in cui \`e possibile osservare la natua quasi-continua dello spettro. In presenza di campo, c'\`e un discretizzazione e un raggruppamento dei precedenti livelli, andando quindi a costituire la struttura dei \textbf{Livelli di Landau}. Questi sono separati da un gap energetico pari a $\hbar\omega_C$ e ogni livello ha un numero di degenerazione pari a $N_d$. Il diagramma rappresenta solo una sezione della completa rappresentazione della struttura dei nuovi livelli energetici, intesi come funzione del vettor d'onda di particella libera $k_z$.
+
+La peculiare modifica della distribuzione dei livelli energetici ha anche effetto su la densit\`a degli stati $g(E)$, che \`e una quantit\`a molto importante da conoscere in quanto permette di arrivare a quantificare tantissime propriet\`a fisiche. Infatti sappiamo dai capitoli precedenti che 
+\newl{g_{2D}(E,H=0) = A_0\frac{m}{\pi\hbar^2}}
+in assenza di campo magnetico \`e un costante. Accendendo il campo magnetico, i livelli energetici permessi sono discreti e spaziati energeticamente in modo costante di $\Delta E = \hbar \omega_C$. Quindi il numero di stati in un intervallo energetico $\hbar\omega_C$ sar\`a proprio
+\newl{g_{2D}\hbar\omega_C = A_0\frac{2\abs{e} H}{h c}}
+che \`e proprio $N_d$, cio\`e la degenerazione degli stati di Landau. In altre parole, la presenza di un campo magnetico raggruppa gli stati in livelli discreti, ma il numero totale di stati in una regione pi\`u grande di $\hbar\omega_C$ rimane comunque inalterato dall'accensione del campo magnetico. La densit\`a degli stati $g_{2D}(E,H)$, come si pu\`o osservare in Fig~\ref{G2D:MAG} diventa un insieme di delte di Dirac spaziate in energia da $\hbar\omega_C$. Per quanto riguardo il caso 3D, l'approccio \`e identico, alla fine risulta un inviluppo tra il path a radice quadrata e quello vista in precedenza. In quanto si ha confinamento sul piano $x-y$ ma particella libera in $z$.
+\begin{figure}
+	\centering
+		\fbox{
+		\begin{tikzpicture}[scale=1,auto=center]
+			\draw[->] (-1,0) -- (4,0);
+			\draw[->] (0,-1) -- (0,4);
+			\node[] at (4,-0.5) {$E$};
+			\node[] at (-0.7,4) {$g_{2D}(E)$};
+			\draw[dashed] (0,2) -- (4,2);
+			\draw[black] (0.5,0) -- (0.5,4);
+			\draw[black] (1.5,0) -- (1.5,4);
+			\draw[black] (2.5,0) -- (2.5,4);
+			\draw[black] (3.5,0) -- (3.5,4);
+			\draw[<->] (2.5,3) -- (3.5,3);
+			\node[] at (3,3.2) {$\hbar\omega_C$};
+		\end{tikzpicture}
+	}
+	\caption{La linea tratteggiata indica il valore dell $g_{2D}$ in caso di campo magnetico nullo. I picchi rappresentano invece la $g_{2D}$ in caso di campo magnetico non nullo.}
+	\label{G2D:MAG}
+\end{figure}
+\subsection{Tubi di Landau e oscillazioni di De Haas-Van Alphen}
+La modifica dei livelli energetici in campo mangetico, provoca grandi cambiamenti anche all'energia totale del sistema $E_T$, che ha come sonseguenza, un grande cambiamento nel comportamento macroscopico del sistema. Una osservabile che \`e interessante studiare perch\`e ha dei cambiamenti macroscopici non indifferenti \`e la magnetizzazione per unit\`a di volume che \`e possibile definire come 
+\newl{M = \frac{1}{V} \frac{\partial E_T}{\partial H}.}
+In questo contesto sar\`a possibile parlare di \textbf{\textit{ oscillazioni di De Haas - Van Alphen}}, il cui loro periodo \`e inversamente proporzionale all'intensit\`a del campo magnetico. In questa sezione verr\`a presentato tutto l'impianto teorico alla base di questo effetto, la cui derivazione teorica la si deve ad L.Onsager.
+
+Si consideri un sistema di elettroni. Nel caso di dimensionalit\`a 2D, \`e possibile derivare in modo esatto i valori di energia totale e magnetizzazione. Di pi\`u interesse \`e il caso di dimensionalit\`a 3D in cui per rappresentare in modo molto comodo i livelli energetici con il loro livello di occupazione, si usa il cos\`i detto \textit{metodo dei Tubi di Landau}, in cui i livelli energetici sono rappresentati nello spazio $k$ da superfici cilindriche simmetriche rispetto all'asse $z$. Le varie superfici cilinfriche, rappresentano appunto i livelli energetici consentiti. Il raggio quadratico di un tubo di Landau \`e proporzionale ai livelli nergetici trasversi (la parte longitudinale invece \`e un continuo).
+
+Come \`e stato discusso in precedenza, il numero degli stati contenuti in ogni sezione trasversa di un tubo (cio\`e la degenerazione di Landau) \`e sempre la stessa e corrisponde al numero di stati di elettrone libero contenuti in quel tubo. Dunque i livelli energetici occupati, che nel caso di campo nullo sono tutti i livelli contenuti nel volume della sfera di Fermi, in questo caso si ridistribuscono in questa struttura discreta che si viene a formare dalla porzione dei tubi di Landau intercettata dalla sfera di Fermi. In approssimazione semiclassica i tubi hanno raggio, dato da
+\newl{E_{n_L} = \frac{\hbar^2 k_{n_L}}{2m} \implicaa k_{n_L} = \left(n_L \frac{ 2\abs{e} H}{\hbar c} \right)^{1/2} }
+e sono occupati fino a $k_{n_L} \leq k_{F\perp}$, dove $k_{F\perp}$ \`e la proiezione trasverssa del vettor d'onda di Fermi (che corrisponde all'energia di Fermi), che a sua volta dipende da $k_z$ dalla relazione
+\newl{\boxed{k^2_F = k_{F\perp}^2 + k_z^2}.}
+Per di pi\`u dobbiamo considerare il fatto che ci sono migliaia tubi di Landau con un macroscopico numero di occupazione di elettroni a causa del grande valore assunto da $n_L$.
+
+Questo contesto pu\`o essere esteso al caso di elettroni di Bloch. A causa dei valori molto grandi assunti dai numero quantici in gioco, la dinamica degli elettroni pu\`o essere ben descritta da una teoria semiclassica vista nella sezione precedente, in cui la parte orbitale-planare nello spazio $k$, pu\`o essere disaccoppiata dalla parte di moto longitudinale e vive su una superficie ad energia costante.
+
+Introducendo la quantizzazione di Landau, si ha soltanto una semplice ridistribuzione dei livelli energetici contenuti all'interno della sfera di Fermi (che ora pu\`o avere una forma sferica ma moldo deformata in modo non banale) in porzioni di tubi di Landau deformati, che tagliano la superficie di Fermi. Le orbite degli elettroni semiclassici sono ora discrete, $N_d$ degeneri e coincidono con la sezione trasversa dei tubi. In particolare, l'orbita nello spazio $k$ che ha superficie trasversa maggiore, praticamente \`e l'orbita sul tubo di Landau tangente alla superficie della sfera di Fermi. Questa orbita \`e chiamata \textbf{Orbita Estremale} e la sua superficie $A_{ext}$ \`e appunto chiamata \textbf{Area Estremale}.
+
+\`E possibile ora spiegare la vera essenza dell'Effetto di De Haas-Van Alphen. In presenza di un campo magnetico $H$, l'energia totale del sistema \`e determinata da una somma sugli stati occupati, che sono distribuiti sopra i tubi di Landau. All'aumentare di $H$ anche il raggio dei tubi di Landau, aumenta ma non ci si aspetta altro che un graduale cambiamentonell'energia totale e quindi nella magnetizzazione, fino a quando i raggi si ingrandiscono fino a raggiungere $k_F$, al di l\`a del quale il tubo di Landau non intercetta pi\`u la superficie di Fermi.
+
+Quando un il raggio di un tubo di Landau, supera $k_F$, esce dal volume della sfera di Fermi, e l'orbita estremale, scompare costringendo un numero macroscopico di $N_d$ elettroni a ricombinarsi su livelli ad energia inferiore. L'energia totale $E_T$ subisce un drammatico cambiamento e lo stesso succede alle grandezze fisiche ad essa collegate, come la magnetizzazione. Questo fenomeno pu\`o essere ripetuto continuando a variare il valore del campo magnetico $H$, in questo modo si incrementano i raggi dei tubi di Landau, facendoli uscire dalla superficie di Fermi. In questo modo, \`e possibile instaurare nel mezzo un comportamento oscillatorio della magnetizzazione.
+
+\`E possibile anche mostrare che il periodo di queste oscillazioni \`e inversamente proporzionale all'intensit\`a del campo magnetico usato. \`E possibile trovare una relazione fondamentale tra il periodo delle oscillazioni e la massima area formata dall'intersezione della superficie di Fermi con un piano perpendicolare ad $H$, cio\`e \`e possibile detrminare $A_{ext}$. Richiamando quanto trovato sulla dinamica semiclassica dell'elettrone, una relazione molto utile in questo momento \`e
+\newl{T = \frac{\hbar^2c}{\abs{e} H} \frac{\Delta A}{\Delta E},}
+perch\`e mette in relazione il periodo di variazione dell'area trasversa dell'orbita. Quindi sapendo il periodo, dato dalle oscillazioni di magnetizzazione, sapendo $\Delta E$ che per il \textbf{principio di corrispondenza Bohr-Sommerfeld} posso scrivere come
+\newl{E_{n+1}-E_{n} = \frac{h}{T} = \hbar\omega_C}
+che sono esattamente le spaziature energetiche dei livelli di Landau, \`e possibile, in questo modo, arrivare facilmente alla variazione di area
+\newl{\boxed{\Delta A = \frac{2\pi\abs{e} H}{\hbar c}.}}
+Questo elegante risultato fu ottenuto per la prima volta da Onsager e pu\`o essere riespresso in termini della teoria di Landau che \`e stata appena sviluppata
+\newl{A_{n_L} = (n_L+\lambda)\Delta A = (n_L+\lambda)\frac{2\pi\abs{e} H}{\hbar c}}
+dove $\lambda$ \`e un numero reale indipendente da $n_L$, una sorta di condizione iniziale. Prendendo l'area estremale $A_{ext}$ che \`e un'area in cui valore \`e strattamente legato alla geometria della superficie di Fermi, si ha la relazione
+\newl{\frac{1}{H} = (n_L+\lambda)\frac{2\pi\abs{e} H}{\hbar c}\frac{1}{A_{ext}}. }
+\`E chiaro che la relazione appena trovata restituisce il valore del campo magnetico a cui avvengono drammatici cambiamenti delle propriet\`a fisiche del sistema. Dato che questi cambiamenti drammatici del sistema avvengono ogni volta che un tubo di Landau supera la superficie di Fermi, \`e pi\`u utile scrivere la relazione
+\newl{\boxed{\Delta\left(\frac{1}{H}\right) = \frac{2\pi\abs{e} H}{\hbar c}\frac{1}{A_{ext}},}}
+che vale ogni volta che si ha un passaggio da $n_L \to n_L-1$. In questo modo \`e possibile concludere che \textit{le oscillazioni osservate nelle quantit\`a fisiche, come la magnetizzazione, sono periodiche e il loro periodo \`e legato da una relazione inversa col campo magnetico.}
+\subsection{Misura della superficie di Fermi}
+Poter associare il periodo delle oscillazioni di magnetizzazione con l'intensit\`a del campo magnetico applicato e quindi, come visto dalla teoria di Landau, all'area estremale del tubo di Landau tangente alla superficie di Fermi, come si potr\`a vedere, permette di ottenere la geometria della superficie di Fermi in modo molto preciso. Questo procedimento \`e solitamente noto come \textit{tomografia}. Fino ad ora per\`o \`e stato mostrato come ottenere l'area estremale data dalla superficie trasversa che interseca tubo di Landau e sfera di Fermi. Ovviamente trasversa al vettore d'onda $k_z$. L'idea sarebbe quindi quella di variare $k_z$ in modo da avere varie aree estremali e quindi una fitta campionatura della superficie di Fermi. Le orbite su questo piano contibuscono al comportamento oscillaotrio, perch\`e  la parte di tubi di landau decresce rapidamente e, come visto in precedenza, una volta passato il raggio estremale, si ha un cambio drastico della distribuzione di un numero macroscopico di elettroni ($N_d$). Il vettore $k_z$ non \`e detto che sia costante, potrebbe presentare dei minimi. Dunque \`e possibile che le oscillazioni che si vedono alla fine, siano il risutato di pi\`u comportamenti oscillatori sommati, come ad esempio l'argento che ha una superficie di Fermi dalla forma un po' particolare (si guardi Land-17).
+\`E importante anche analizzare le codizioni entro cui \`e possibile che si verifichi un comportamento oscillatorio. A temperatura zero, variando $H$ si ha un drammatico cambio dell'energia totale in quando un numero macroscopico di elettroni viene considerato dal pop-out, di un tubo di Landau dalla superficie di Fermi, a temperatura finita, invece, la situazione \`e molto differente. I livelli di Landau sono popolati e il pop-out di un tubo di Landau dalla superficie di fermi, crea una ridistribuzione di elettroni non cos\`i grande come nel caso a $T=0$, si ha dunque un comportamento diamagnetico o paramentico, quindi
+\newl{\boxed{H \gg \frac{k_BTmc}{\abs{e} \hbar}}},
+quindi \textbf{Grandi campi magnetici e bassissima temperatura.} In conclusione \`e importante realizzare che anche le impurit\`a giocano un ruolo fondamentale, gli stati elettronici hanno un tempo di vita finito $\tau$ che causa allargamento dei livelli energetici di una quantit\`a nell'ordine di $\hbar/\tau$ a causa del principio di indeterminazione di Heisenberg. Questo pu\`o contribuire a far sparire le oscillazioni di De Haas-Van Alphen se il livello dell'allargamento \`e pi\`u grande della separazione dei livelli di Landau. L'ulteriore condizione che si aggiunge \`e 
+\newl{\boxed{ \hbar \omega_C \gg \frac{\hbar}{\tau}. }}
+
+
+
+
+
+
+

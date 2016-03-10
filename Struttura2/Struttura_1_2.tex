@@ -1,0 +1,64 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\input funzioni.sty
+\input funzioni2.sty
+\floatstyle{ruled}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[width=125mm]{caption}
+\usepackage{amsthm}
+\usepackage{algorithm2e}
+\usepackage{dsfont}
+\usepackage{amsthm}
+\usepackage{algpseudocode}
+\usepackage{empheq}
+\usepackage{tikz}
+\usepackage{cancel}
+
+% Dimensione della pagina
+\setlength{\oddsidemargin}{.3in}  % Distance from the left edge -1 inch 
+\setlength{\textwidth}{145mm}     % Normal width of the text
+\setlength{\topmargin}{.25in}     % Distance from top to PAGE'S HEAD -1 inch
+\setlength{\textheight}{225mm}    % Height of the body of page
+\setlength{\headheight}{0mm}      % Height of a box containing the head
+\setlength{\parskip}{0.5mm}         % Extra vertical space before a paragraph
+\setlength{\parindent}{9mm}       % Width of the indentation 
+\linespread{1.12}                 % Line spacing        
+\renewcommand{\floatpagefraction}{.9}
+
+\newtheorem{Teorema}{Teorema}
+
+\begin{document}
+\title{\bf \Huge Stuttura della Materia}
+
+\author{Stefano Mandelli\\
+	Dipartimento di Fisica, Universit\`a degli Studi di Milano,\\
+	Via Celoria 16, 20133 Milano, Italia
+}
+
+\maketitle
+\begin{center}
+\includegraphics[scale=0.9]{IMG/copertina.jpg}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+
+\input{capitolo1.tex}
+\input{capitolo2.tex}
+\input{capitolo3.tex}
+\input{capitolo4.tex}
+\input{capitolo5.tex}
+\input{capitolo6.tex}
+\input{capitolo7.tex}
+\input{capitolo8.tex}
+
+\end{document}
